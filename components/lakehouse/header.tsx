@@ -6,7 +6,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 interface HeaderProps {
-  activePage?: "cx" | "vue360"
+  activePage?: "cx" | "vue360" | "comex"
 }
 
 export function Header({ activePage = "cx" }: HeaderProps) {
@@ -23,7 +23,7 @@ export function Header({ activePage = "cx" }: HeaderProps) {
               <p className="text-xs text-muted-foreground">Document de Reference - Orange Maroc</p>
             </div>
           </div>
-          
+
           <nav className="hidden items-center gap-1 md:flex">
             <Link
               href="/"
@@ -46,6 +46,17 @@ export function Header({ activePage = "cx" }: HeaderProps) {
               )}
             >
               Use Case Vue 360
+            </Link>
+            <Link
+              href="/comex"
+              className={cn(
+                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                activePage === "comex"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+              )}
+            >
+              Use Case Comex
             </Link>
           </nav>
         </div>
