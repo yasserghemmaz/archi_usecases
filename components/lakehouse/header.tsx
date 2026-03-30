@@ -6,7 +6,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 interface HeaderProps {
-  activePage?: "cx" | "vue360"
+  activePage?: "cx" | "vue360" | "fair"
 }
 
 export function Header({ activePage = "cx" }: HeaderProps) {
@@ -46,6 +46,17 @@ export function Header({ activePage = "cx" }: HeaderProps) {
               )}
             >
               Use Case Vue 360
+            </Link>
+            <Link
+              href="/use-case-fair"
+              className={cn(
+                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                activePage === "fair"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+              )}
+            >
+              Use Case FAIR
             </Link>
           </nav>
         </div>
