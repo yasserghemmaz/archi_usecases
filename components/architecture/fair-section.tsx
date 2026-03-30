@@ -214,8 +214,8 @@ function OverviewSection() {
                                   />
                                   <FlowBox
                                     icon={<Server className="h-4 w-4" />}
-                                    title="Systemes Destination"
-                                    subtitle="Exploitation FAIR"
+                                    title="Systèmes de Destination"
+                                    subtitle="Connectés à FAIR"
                                     color="green"
                                   />
                                 </div>
@@ -419,8 +419,8 @@ function MigrationSection() {
                                     <span>Supervision temps reel</span>
                                   </div>
                                   <div className="flex items-center gap-2">
-                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Systemes FAIR</Badge>
-                                    <span>Exploitation destination</span>
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Systèmes de Destination</Badge>
+                                    <span>Connectés à FAIR</span>
                                   </div>
                                 </div>
                               </div>
@@ -518,7 +518,7 @@ df_slot_outages = df_anomalies.withColumn("count_offline", F.count("*").over(win
         layerColor="gold"
         title="D. Pre-calcul des KPIs pour le Dashboard (Couche Gold - Analytics)"
         ancienScript="aggregator.py + alarm_manager.py"
-        description="Avant, c'est l'application Flask et l'aggregator qui pre-calculaient tout pour les graphiques. Dans Dataiku, vous ferez des Recettes de Fenetrage Visuel (Group recipe) pour sortir exactement les tables agregees que PowerBI, l'Interface Web et les Systemes d'exploitation FAIR vont consommer pour l'affichage et le traitement."
+        description="Avant, c'est l'application Flask et l'aggregator qui pre-calculaient tout pour les graphiques. Dans Dataiku, vous ferez des Recettes de Fenetrage Visuel (Group recipe) pour sortir exactement les tables agregees que PowerBI, l'Interface Web et les Systèmes de Destination connectés à FAIR vont consommer pour l'affichage et le traitement."
         datasetSortie="gold_city_trends, gold_gpon_trends, gold_live_alarms"
         codeExample={`# KPI Minute par Minute par Ville (gpon_trends et city_trends)
 df_trends = df_latest_events.withColumn(
@@ -602,7 +602,7 @@ df_trends = df_latest_events.withColumn(
                                   <td className="py-3 px-4"><code className="text-primary">-</code></td>
                                   <td className="py-3 px-4"><Badge className="bg-green-500/20 text-green-400 border-green-500/30">Exposition</Badge></td>
                                   <td className="py-3 px-4">Export / Integration</td>
-                                  <td className="py-3 px-4">Systemes Exploitation FAIR</td>
+                                  <td className="py-3 px-4">Systèmes de Destination connectés à FAIR</td>
                                 </tr>
               </tbody>
             </table>
