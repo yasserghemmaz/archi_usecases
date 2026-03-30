@@ -97,9 +97,9 @@ function OverviewSection() {
                   <span>Agregation & Caches</span>
                   <ArrowRight className="h-4 w-4 opacity-50 hidden xl:block" />
                 </div>
-                <div className="rounded-lg bg-green-500/10 p-2 text-xs font-medium text-green-400">
-                  <span>Presentation Web</span>
-                </div>
+<div className="rounded-lg bg-green-500/10 p-2 text-xs font-medium text-green-400">
+                                <span>Exposition FAIR</span>
+                              </div>
               </div>
 
               {/* Flow Diagram */}
@@ -198,28 +198,27 @@ function OverviewSection() {
                   />
                 </div>
 
-                {/* Column 5: Presentation */}
-                <div className="space-y-3">
-                  <FlowBox
-                    icon={<Eye className="h-4 w-4" />}
-                    title="app.py / Flask"
-                    subtitle="Calcule KPIs"
-                    color="green"
-                    isScript
-                  />
-                  <FlowBox
-                    icon={<Users className="h-4 w-4" />}
-                    title="users.db"
-                    subtitle="Authentification"
-                    color="green"
-                  />
-                  <FlowBox
-                    icon={<Database className="h-4 w-4" />}
-                    title="dashboard_analytics.db"
-                    subtitle="Metriques globales"
-                    color="green"
-                  />
-                </div>
+{/* Column 5: Exposition FAIR */}
+                                <div className="space-y-3">
+                                  <FlowBox
+                                    icon={<BarChart3 className="h-4 w-4" />}
+                                    title="Dashboards PowerBI"
+                                    subtitle="Visualisation & KPIs"
+                                    color="green"
+                                  />
+                                  <FlowBox
+                                    icon={<Eye className="h-4 w-4" />}
+                                    title="Interface Web"
+                                    subtitle="Supervision temps reel"
+                                    color="green"
+                                  />
+                                  <FlowBox
+                                    icon={<Server className="h-4 w-4" />}
+                                    title="Systemes Destination"
+                                    subtitle="Exploitation FAIR"
+                                    color="green"
+                                  />
+                                </div>
               </div>
             </div>
           </div>
@@ -399,24 +398,32 @@ function MigrationSection() {
 
               <ArrowRight className="h-8 w-8 text-primary rotate-90 lg:rotate-0" />
 
-              {/* Nouveau */}
-              <div className="flex-1 rounded-lg border border-green-500/30 bg-green-500/5 p-4">
-                <h4 className="text-sm font-medium text-green-400 mb-3">Nouveau Systeme</h4>
-                <div className="space-y-2 text-xs text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">PySpark</Badge>
-                    <span>Recettes Dataiku</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Iceberg/HDFS</Badge>
-                    <span>Stockage distribue</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Exalead</Badge>
-                    <span>Vue 360 Supervision</span>
-                  </div>
-                </div>
-              </div>
+{/* Nouveau */}
+                              <div className="flex-1 rounded-lg border border-green-500/30 bg-green-500/5 p-4">
+                                <h4 className="text-sm font-medium text-green-400 mb-3">Nouveau Systeme</h4>
+                                <div className="space-y-2 text-xs text-muted-foreground">
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">PySpark</Badge>
+                                    <span>Recettes Dataiku</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Iceberg/HDFS</Badge>
+                                    <span>Stockage distribue</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">PowerBI</Badge>
+                                    <span>Dashboards analytiques</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Interface Web</Badge>
+                                    <span>Supervision temps reel</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30">Systemes FAIR</Badge>
+                                    <span>Exploitation destination</span>
+                                  </div>
+                                </div>
+                              </div>
             </div>
           </div>
         </CardContent>
@@ -511,7 +518,7 @@ df_slot_outages = df_anomalies.withColumn("count_offline", F.count("*").over(win
         layerColor="gold"
         title="D. Pre-calcul des KPIs pour le Dashboard (Couche Gold - Analytics)"
         ancienScript="aggregator.py + alarm_manager.py"
-        description="Avant, c'est l'application Flask et l'aggregator qui pre-calculaient tout pour les graphiques. Dans Dataiku, vous ferez des Recettes de Fenetrage Visuel (Group recipe) pour sortir exactement les tables agregees que Exalead Vue 360 va consommer/indexer pour l'affichage."
+        description="Avant, c'est l'application Flask et l'aggregator qui pre-calculaient tout pour les graphiques. Dans Dataiku, vous ferez des Recettes de Fenetrage Visuel (Group recipe) pour sortir exactement les tables agregees que PowerBI, l'Interface Web et les Systemes d'exploitation FAIR vont consommer pour l'affichage et le traitement."
         datasetSortie="gold_city_trends, gold_gpon_trends, gold_live_alarms"
         codeExample={`# KPI Minute par Minute par Ville (gpon_trends et city_trends)
 df_trends = df_latest_events.withColumn(
@@ -579,12 +586,24 @@ df_trends = df_latest_events.withColumn(
                   <td className="py-3 px-4">Recette Group visuelle</td>
                   <td className="py-3 px-4">gold_live_alarms</td>
                 </tr>
-                <tr>
-                  <td className="py-3 px-4"><code className="text-primary">app.py (Flask)</code></td>
-                  <td className="py-3 px-4"><Badge className="bg-green-500/20 text-green-400 border-green-500/30">Exalead</Badge></td>
-                  <td className="py-3 px-4">Indexation directe</td>
-                  <td className="py-3 px-4">Vue 360 Supervision</td>
-                </tr>
+<tr className="border-b border-border/50">
+                                  <td className="py-3 px-4"><code className="text-primary">app.py (Flask)</code></td>
+                                  <td className="py-3 px-4"><Badge className="bg-green-500/20 text-green-400 border-green-500/30">Exposition</Badge></td>
+                                  <td className="py-3 px-4">Connexion directe</td>
+                                  <td className="py-3 px-4">Dashboards PowerBI</td>
+                                </tr>
+                                <tr className="border-b border-border/50">
+                                  <td className="py-3 px-4"><code className="text-primary">-</code></td>
+                                  <td className="py-3 px-4"><Badge className="bg-green-500/20 text-green-400 border-green-500/30">Exposition</Badge></td>
+                                  <td className="py-3 px-4">API / Webhooks</td>
+                                  <td className="py-3 px-4">Interface Web Supervision</td>
+                                </tr>
+                                <tr>
+                                  <td className="py-3 px-4"><code className="text-primary">-</code></td>
+                                  <td className="py-3 px-4"><Badge className="bg-green-500/20 text-green-400 border-green-500/30">Exposition</Badge></td>
+                                  <td className="py-3 px-4">Export / Integration</td>
+                                  <td className="py-3 px-4">Systemes Exploitation FAIR</td>
+                                </tr>
               </tbody>
             </table>
           </div>
